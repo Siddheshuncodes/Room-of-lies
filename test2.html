@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Imposter Game</title>
+  </head>
+  <style>
+    /* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  /* Message container styles */
+  #message-container {
+    margin-bottom: 20px;
+  }
+  
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  /* Character list styles */
+  #character-list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .character {
+    padding: 10px;
+    margin: 10px;
+    background-color: #666;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .character:hover {
+    background-color: #888;
+  }
+  
+  /* Backstory container styles */
+  #backstory-container {
+    margin-bottom: 20px;
+  }
+  
+  /* Task container styles */
+  #task-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #task-description {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #task-choices {
+    font-size: 18px;
+  }
+  
+  /* Input and button styles */
+  #choice-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #submit-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #ff5252;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #submit-button:hover {
+    background-color: #ff6b6b;
+  }
+  
+  /* Scary theme styles */
+  h1,
+  .character {
+    color: #ff5252;
+  }
+  
+  body {
+    background-color: #000;
+  }
+  
+  #message-container {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  #backstory-container {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  #task-container {
+    background-color: #555;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  #task-description {
+    color: #ff5252;
+  }
+  
+  #choice-input {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  #submit-button {
+    background-color: #ff5252;
+  }
+  
+  #submit-button:hover {
+    background-color: #ff6b6b;
+  }
+  
+  </style>
+  <body>
+    <h1>Imposter Game</h1>
+    <div id="message-container"></div>
+    <div id="character-list"></div>
+    <div id="backstory-container"></div>
+    <div id="task-container">
+      <h2 id="task-description"></h2>
+      <p id="task-choices"></p>
+    </div>
+
+    <input type="text" id="choice-input" />
+    <button id="submit-button">Submit</button>
+
+    <script>
+  // Character class definition
+ // Character class definition
+class Character {
+    constructor(name, role, backstory) {
+      this.name = name;
+      this.role = role;
+      this.backstory = backstory;
+    }
+  }
+  
+  // Task class definition
+  class Task {
+    constructor(description, clue) {
+      this.description = description;
+      this.clue = clue;
+    }
+  }
+  
+
+  
+  
+  // Function to randomly select the imposter
+  function selectImposter(characters) {
+    return characters[Math.floor(Math.random() * characters.length)];
+  }
+  
+  // Function to choose the player's character
+  function chooseCharacter(characters) {
+    return new Promise((resolve, reject) => {
+      const characterList = document.getElementById("character-list");
+      characterList.innerHTML = "Choose your character:";
+  
+      characters.forEach((character, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${character.name} - ${character.role}`;
+        characterList.appendChild(listItem);
+      });
+  
+      const choiceInput = document.getElementById("choice-input");
+      const submitButton = document.getElementById("submit-button");
+  
+      submitButton.addEventListener("click", () => {
+        const choice = parseInt(choiceInput.value);
+        if (!isNaN(choice) && choice >= 1 && choice <= characters.length) {
+          const selectedCharacter = characters[choice - 1];
+          if (selectedCharacter.name === "Sneha") {
+            displayMessage("You choose Sneha, who is the imposter. Game over!");
+            reject("Game over!");
+          } else {
+            resolve(selectedCharacter);
+          }
+        } else {
+          displayMessage("Invalid choice. Please try again.");
+        }
+      });
+    });
+  }
+  
+  // Function to reveal character backstories
+  function revealBackstories(characters) {
+    return new Promise((resolve) => {
+      const backstoryContainer = document.getElementById("backstory-container");
+      backstoryContainer.innerHTML = "Character Backstories:";
+  
+      characters.forEach((character) => {
+        const backstoryItem = document.createElement("p");
+        backstoryItem.textContent = `${character.name}: ${character.backstory}`;
+        backstoryContainer.appendChild(backstoryItem);
+      });
+  
+      setTimeout(resolve, 2000);
+    });
+  }
+  
+  // Function to perform a task with multiple choices
+  function performTask(task, imposter) {
+    return new Promise((resolve) => {
+      const taskDescription = document.getElementById("task-description");
+      const taskChoices = document.getElementById("task-choices");
+  
+      taskDescription.textContent = "Task Description:";
+      taskDescription.nextElementSibling.textContent = task.description;
+  
+      taskChoices.innerHTML = "";
+      const choiceForm = document.createElement("form");
+      const choiceInput = document.createElement("input");
+      choiceInput.type = "text";
+      const submitButton = document.createElement("button");
+      submitButton.textContent = "Submit";
+      choiceForm.appendChild(choiceInput);
+      choiceForm.appendChild(submitButton);
+      taskChoices.appendChild(choiceForm);
+  
+      choiceForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const choice = choiceInput.value.trim().toLowerCase();
+        choiceInput.value = "";
+  
+        // Add multiple choices for the task outcome
+        if (
+          task.description ===
+          "You found a Strange pattern on the wall...wait!!...Mehul haS a Similar pattern on hiS left hand"
+        ) {
+          if (choice === "1") {
+            displayMessage("Your skills come in handy. You find out a meaning between the patterns!");
+            displayMessage("The clue reveals that the imposter carries a pen which is very special to him/her");
+          } else {
+            displayMessage("You did not find any clue :(");
+          }
+        } else if (
+          task.description === "You fouNd a white coat haNgiNg on the wall!..."
+        ) {
+          if (choice === "3") {
+            displayMessage("You have sharp eyes!!");
+            displayMessage("The imposter uses paper on a daily basis");
+          } else {
+            displayMessage("You did not find any clue :(");
+          }
+        } else if (
+          task.description ===
+          "You find out Himanshu is hiding somEthing...it's a piEce of papEr"
+        ) {
+          if (choice === "3") {
+            displayMessage("Sneha was telling the truth...");
+            displayMessage("The clue hints that the imposter uses the right side of the brain more often");
+          } else {
+            displayMessage("You did not find any clue :(");
+          }
+        } else if (task.description === "A jersey is lying around in tHe room") {
+          if (choice === "2") {
+            displayMessage(
+              "Every task, clue, and profession is connected, be sure to consider them while making your choice"
+            );
+            displayMessage("CAREFUL!! The imposter is creative in deceiving the people in the room...OR is the imposter playing mind games....");
+          } else {
+            displayMessage("You did not find any clue :(");
+          }
+        } else if (
+          task.description === "DeepAli hAnds you A knife....you Are frustrAted And Angry!!!"
+        ) {
+          if (choice === "1") {
+            displayMessage("WILD CARD!!!");
+            displayMessage("Think...don't you feel something odd in the tasks given to you from the starting.....");
+          } else {
+            displayMessage("You did not find any clue :(");
+          }
+        }
+  
+        setTimeout(resolve, 3000);
+      });
+    });
+  }
+  
+  // Helper function to display a message on the screen
+  function displayMessage(message) {
+    const messageElement = document.createElement("p");
+    messageElement.textContent = message;
+    const messageContainer = document.getElementById("message-container");
+    messageContainer.appendChild(messageElement);
+  }
+  
+  // Main game code
+  async function playGame() {
+    // Character and task initialization
+    const characters = [
+      new Character("Deepali", "Doctor", "Deepali is a skilled doctor with a deep knowledge of medicine."),
+      new Character("Mehul", "Data Analyst", "Mehul is an expert at creating and overseeing DSA related subjects."),
+      new Character("Gaurav", "Engineer", "Gaurav is a talented engineer who is good at problem-solving."),
+      new Character("Himanshu", "Footballer", "Himanshu is a well-known footballer known for his goalkeeping skills."),
+      new Character("Sneha", "Drawing Artist", "Sneha is an exceptional artist with creative thinking skills."),
+    ];
+  
+    const tasks = [
+      new Task(
+        "You found a Strange pattern on the wall...wait!!...Mehul haS a Similar pattern on hiS left hand",
+        "The clue reveals that the imposter carries a pen which is very special to him/her"
+      ),
+      new Task(
+        "You fouNd a white coat haNgiNg on the wall!...",
+        "The imposter uses paper on a daily basis"
+      ),
+      new Task(
+        "You find out Himanshu is hiding somEthing...it's a piEce of papEr",
+        "The clue hints that the imposter uses the right side of the brain more often"
+      ),
+      new Task(
+        "A jersey is lying around in tHe room",
+        "CAREFUL!! The imposter is creative in deceiving the people in the room...OR is the imposter playing mind games...."
+      ),
+      new Task(
+        "DeepAli hAnds you A knife....you Are frustrAted And Angry!!!",
+        "Think...don't you feel something odd in the tasks given to you from the starting....."
+      ),
+    ];
+  
+    // Game start
+    try {
+      displayMessage("Welcome to the Imposter Game!");
+      displayMessage("You and your friends are trapped in a room with an imposter among you.");
+      displayMessage("Your task is to find the imposter before it's too late!");
+      displayMessage("Let's begin the game!");
+  
+      const imposter = selectImposter(characters);
+      displayMessage(`The imposter is among these characters: ${characters.map((character) => character.name).join(", ")}`);
+  
+      const chosenCharacter = await chooseCharacter(characters);
+      displayMessage(`You have chosen ${chosenCharacter.name}, a ${chosenCharacter.role}.`);
+  
+      await revealBackstories(characters);
+  
+      for (const task of tasks) {
+        displayMessage("------------------------------------------------------------");
+        await performTask(task, imposter);
+      }
+  
+      if (chosenCharacter === imposter) {
+        displayMessage("Congratulations! You have successfully identified the imposter and won the game!");
+      } else {
+        displayMessage("Oh no! You failed to identify the imposter. Better luck next time!");
+      }
+  
+      displayMessage("Game over!");
+    } catch (error) {
+      displayMessage(error);
+    }
+  }
+  
+  // Call the game function to start the game
+  playGame();
+  
+    </script>
+  </body>
+</html>

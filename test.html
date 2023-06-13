@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Among Us Offical</title>
+    <link rel="icon" href="image/icon.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+    
+    body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        background-color: black;
+    }
+    
+    #mainnav {
+        font-family: 'VT323', monospace;
+        background-color: black;
+        color: white;
+    }
+    
+    #navlogo {
+        position: relative;
+        margin: auto;
+        width: 240px;
+        height: 90px;
+    }
+    
+    @media screen and (max-width:560px) {
+        #navlogo {
+            width: 200px;
+            height: 90px;
+            margin-left: 15px;
+            z-index: -9;
+        }
+    }
+    
+    #navlinkof1 {
+        font-size: 22px;
+        margin-left: 30px;
+    }
+    
+    .dropdown-item {
+        color: black;
+        font-size: 22px;
+        text-align: center;
+    }
+    
+    .dropdown-item:hover {
+        font-size: 23px;
+        padding: 10px;
+        text-decoration: underline;
+    }
+    
+    #searchbox {
+        height: 40px;
+        border-radius: 25px;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+    #searchbtn {
+        border-radius: 25px;
+        height: 40px;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+    #jumbobody {
+        margin-top: 64px;
+    }
+    
+    @media screen and (max-width:1000px) {
+        #jumbobody {
+            margin-top: 100px;
+        }
+    }
+    
+    @media screen and (max-width:720px) {
+        #jumbobody {
+            margin-top: 130px;
+        }
+    }
+    
+    #bodybg {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .leftlogo img {
+        width: 200px;
+        height: auto;
+        z-index: +9;
+        float: left;
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    
+    @media screen and (max-width:1000px) {
+        .leftlogo img {
+            width: 150px;
+            height: auto;
+        }
+    }
+    
+    @media screen and (max-width:720px) {
+        .leftlogo img {
+            width: 100px;
+            height: auto;
+            position: relative;
+            bottom: 30px;
+        }
+    }
+    
+    @media screen and (max-width:500px) {
+        .leftlogo img {
+            position: relative;
+            bottom: 45px;
+        }
+    }
+    
+    .rightlogo img {
+        width: 500px;
+        height: auto;
+        margin-top: 30px;
+        z-index: +9;
+        float: right;
+    }
+    
+    .mainbgof img {
+        position: relative;
+        bottom: 300px;
+        z-index: -9;
+    }
+    
+    #trailerbg {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: relative;
+        bottom: 300px;
+    }
+    
+    .titletxt h1 {
+        font-family: 'Rubik', sans-serif;
+        color: white;
+        margin: 60px auto 40px auto;
+    }
+    
+    @media screen and (max-width:992px) {
+        #trialervideo {
+            display: flex;
+            justify-content: center;
+        }
+    }
+    
+    .videotxt {
+        font-family: 'VT323', monospace;
+        color: white;
+        font-size: 22pt;
+        margin-bottom: 40px;
+    }
+    
+    #screenshot {
+        font-family: 'VT323', monospace;
+        color: white;
+        font-size: 22pt;
+        margin-bottom: 40px;
+        text-decoration: underline;
+    }
+    
+    #screenshotimg {
+        overflow: hidden;
+        transition: 0.5s all ease-in-out;
+    }
+    
+    #screenshotimg:hover {
+        transform: scale(1.1);
+    }
+    
+    #playable12 {
+        position: relative;
+        bottom: 300px;
+        background-color: black;
+    }
+    
+    .playhead h1 {
+        font-family: 'Rubik', sans-serif;
+        color: white;
+    }
+    
+    #secondplayable {
+        padding: 0;
+        margin: 0;
+    }
+    
+    #awardcol {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        position: relative;
+        bottom: 300px;
+    }
+    
+    #customrow {
+        position: relative;
+        bottom: 172px;
+    }
+    
+    @media screen and (max-width:1400px) {
+        #customrow {
+            position: relative;
+            bottom: 150px;
+        }
+    }
+    
+    @media screen and (max-width:1200px) {
+        #customrow {
+            position: relative;
+            bottom: 120px;
+        }
+    }
+    
+    @media screen and (max-width:992px) {
+        #customrow {
+            position: relative;
+            bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    
+    @media screen and (max-width:992px) {
+        #screenshotimg {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    
+    #HTPmain {
+        position: relative;
+        bottom: 300px;
+    }
+    
+    #HTPbg {
+        background-size: cover;
+        background-position: top center;
+    }
+    
+    .How {
+        font-family: 'Rubik', sans-serif;
+        color: white;
+        margin: 70px auto 40px auto;
+    }
+    
+    .Howinfo {
+        font-family: 'Rubik', sans-serif;
+        color: white;
+        font-size: 18pt;
+    }
+    
+    .crew {
+        margin-top: 80px;
+        margin-bottom: 20px;
+    }
+    
+    #crewmatetitle {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .crewmateobj {
+        color: white;
+        font-family: 'Rubik', sans-serif;
+    }
+    
+    #crewobjrow {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    @media screen and (max-width:992px) {
+        #crewobjrow {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    }
+    
+    .crewmatepng {
+        margin: 0px;
+        padding-left: 25px;
+    }
+    
+    .crewmateduty {
+        font-family: 'Rubik', sans-serif;
+        color: white;
+        font-weight: bold;
+    }
+    
+    #footer12 {
+        position: relative;
+        bottom: 150px;
+    }
+    
+    #Contactleft {
+        margin-top: 60px;
+        text-align: end;
+        color: white;
+    }
+    
+    @media screen and (max-width:990px) {
+        #Contactleft {
+            text-align: center;
+            margin-top: 0px;
+        }
+    }
+    
+    #Contactleft .contacttxt h1 {
+        font-family: 'VT323', monospace;
+        font-size: 40pt;
+    }
+    
+    .contacttxt h4 {
+        font-family: 'VT323', monospace;
+        font-size: 19pt;
+    }
+    
+    #Contactright {
+        background-color: #121212;
+        padding-bottom: 50px;
+    }
+    
+    #floatingInput {
+        background-color: transparent;
+        font-family: 'VT323', monospace;
+        color: white;
+    }
+    
+    #floatingInput:focus {
+        background: transparent;
+        color: white;
+        font-family: 'VT323', monospace;
+        font-size: 16pt;
+        -webkit-box-shadow: none;
+        border-bottom: 1px solid white;
+        outline: 0;
+    
+    }
+    
+    #checktxt {
+        color: white;
+        font-family: 'Rubik', sans-serif;
+        font-size: 11pt;
+    }
+    
+    .privacy {
+        position: relative;
+        left: 24px;
+    }
+    
+    /* 12 */
+    .btn-12 {
+        position: relative;
+        top: 130px;
+        border: none;
+        box-shadow: none;
+        width: 130px;
+        height: 40px;
+        line-height: 42px;
+        color: white;
+        font-size: 18pt;
+        font-family: 'Rubik', sans-serif;
+        font-weight: bolder;
+        -webkit-perspective: 230px;
+        perspective: 230px;
+        background-color: transparent;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    @media screen and (max-width:992px) {
+        .btn-12 {
+            top: 0px;
+        }
+    }
+    
+    .btn-12 span {
+        background: rgba(45, 117, 182, 1);
+        background: linear-gradient(0deg, rgba(45, 117, 182, 1) 0%, rgba(20, 117, 182, 1) 100%);
+        display: block;
+        position: absolute;
+        width: 130px;
+        height: 40px;
+        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+            7px 7px 20px 0px rgba(0, 0, 0, .1),
+            4px 4px 5px 0px rgba(0, 0, 0, .1);
+        border-radius: 5px;
+        margin: 0;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+    
+    .btn-12 span:nth-child(1) {
+        box-shadow:
+            -7px -7px 20px 0px #fff9,
+            -4px -4px 5px 0px #fff9,
+            7px 7px 20px 0px #0002,
+            4px 4px 5px 0px #0001;
+        -webkit-transform: rotateX(90deg);
+        -moz-transform: rotateX(90deg);
+        transform: rotateX(90deg);
+        -webkit-transform-origin: 50% 50% -20px;
+        -moz-transform-origin: 50% 50% -20px;
+        transform-origin: 50% 50% -20px;
+    }
+    
+    .btn-12 span:nth-child(2) {
+        -webkit-transform: rotateX(0deg);
+        -moz-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: 50% 50% -20px;
+        -moz-transform-origin: 50% 50% -20px;
+        transform-origin: 50% 50% -20px;
+    }
+    
+    .btn-12:hover span:nth-child(1) {
+        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+            7px 7px 20px 0px rgba(0, 0, 0, .1),
+            4px 4px 5px 0px rgba(0, 0, 0, .1);
+        -webkit-transform: rotateX(0deg);
+        -moz-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+    }
+    
+    .btn-12:hover span:nth-child(2) {
+        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+            7px 7px 20px 0px rgba(0, 0, 0, .1),
+            4px 4px 5px 0px rgba(0, 0, 0, .1);
+        color: transparent;
+        -webkit-transform: rotateX(-90deg);
+        -moz-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+    }
+    
+    .footer {
+        background-color: #121212;
+    }
+    
+    #socialconnect {
+        font-family: 'Rubik', sans-serif;
+        color: white;
+        font-weight: bold;
+        font-size: 17pt;
+    
+    }
+</style>  
+  </head>
+
+<body>
+    <!----------------Navbar Start-------------------->
+    <nav class="navbar fixed-top navbar-expand-lg" id="mainnav">
+        <div class="container-fluid">
+            <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#"><img
+                    src="hed1.jpg" id="navlogo" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <i class="fa-solid fa-bars" style="color:white;font-size:22pt;"></i>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navlinkof1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active px-3" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="#">News</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex" role="search">
+                    <ul class="navbar-nav list-unstyled" id="navlinkof1">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Inside Innersloth</a></li>
+                                <li><a class="dropdown-item" href="#">Support & FA<u>Q</u></a></li>
+                                <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                                <li><a class="dropdown-item" href="#">Press Kit</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        id="searchbox">
+                    <button class="btn btn-outline-danger" type="submit" id="searchbtn">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!----------------Navbar End-------------------->
+
+    <!-----------Jumbotron Start------------->
+    <div class="col-lg-12" id="jumbobody">
+        <div class="container-fluid" id="bodybg">
+            <div class="row">
+                <div class="col">
+                    <div class="leftlogo">
+                        <figure>
+                            <img src="image/InnerslothLogo.png" class="img-fluid" alt="">
+                        </figure>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="rightlogo">
+                        <figure>
+                            <img src="image/Impostor_title_card.png" class="img-fluid" alt="">
+                        </figure>
+                    </div>
+                </div>
+                <div class="mainbgof">
+                    <img src="image/thumb-1920-1104367.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-----------Jumbotron End------------->
+
+    <!---------------Trailer & Gameplay Start-------------------->
+    <div class="col-lg-12" style="background-image:url(image/maxresdefault.jpg);" id="trailerbg">
+        <div class="container">
+            <div class="row">
+                <div class="trailertitle">
+                    <div class="titletxt text-center">
+                        <h1><b>Watch Trailers & Gameplay Screenshots</b></h1>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="embed-responsive embed-responsive-16by9" id="trialervideo">
+                        <iframe width="400" height="315" src="https://www.youtube.com/embed/0YKjFoGxbec"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p class="videotxt text-white text-center">Among Us Gameplay Trailer</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="embed-responsive embed-responsive-16by9" id="trialervideo">
+                        <iframe width="400" height="315" src="https://www.youtube.com/embed/NJTwSoae488"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p class="videotxt text-white text-center">Among Us VR Offical Trailer</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="embed-responsive embed-responsive-16by9" id="trialervideo">
+                        <iframe width="400" height="315" src="https://www.youtube.com/embed/9pyYq9lpjls"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p class="videotxt text-white text-center">Among Us Roles Trailer</p>
+                </div>
+            </div>
+            <div class="row">
+                <h1 id="screenshot" class="text-center">Gameplay Screenshots</h1>
+                <div class="col-lg-6">
+                    <img src="image/Gameplay1.jpg" id="screenshotimg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-3">
+                    <img src="image/Gameplay2.jpg" id="screenshotimg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-3">
+                    <img src="image/Gameplay3.jpg" id="screenshotimg" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="row" id="customrow">
+                <div class="col">
+
+                </div>
+                <div class="col-lg-3">
+                    <img src="image/Gameplay4.jpg" id="screenshotimg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-3">
+                    <img src="image/Gameplay5.png" id="screenshotimg" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---------------Trailer & Gameplay End-------------------->
+
+    <!-----------------Playable Section Start------------------->
+    <div class="col-lg-12" id="playable12">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="playhead">
+                        <h1 class="text-white text-center"><b>Among Us is available on many Game Platforms</b></h1>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-3">
+                                <a
+                                    href="https://play.google.com/store/apps/details?id=com.innersloth.spacemafia&hl=en_SG&gl=US&pli=1">
+                                    <img src="image/Playstore.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="col p-3">
+                                <a href="https://apps.apple.com/us/app/among-us/id1351168404?platform=iphone">
+                                    <img src="image/Apple.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="col p-3">
+                                <a href="https://www.xbox.com/en-sg/games/store/among-us/9ng07qjnk38j">
+                                    <img src="image/Ms.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-3">
+                                <a href="https://store.epicgames.com/en-US/p/among-us">
+                                    <img src="image/Epic.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="col p-3">
+                                <a href="https://store.steampowered.com/app/945360/Among_Us/">
+                                    <img src="image/Steam.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="col p-3">
+                                <a href="https://innersloth.itch.io/among-us">
+                                    <img src="image/Itcho.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-3">
+                                <a href="https://www.playstation.com/en-sg/games/among-us/">
+                                    <img src="image/Playstation.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="col p-3">
+                                <a href="https://www.xbox.com/en-sg/games/store/among-us/9ng07qjnk38j">
+                                    <img src="image/Xbox.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="col p-3">
+                                <a href="https://www.nintendo.com/store/products/among-us-switch/">
+                                    <img src="image/Nintendo.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6" id="secondplayable">
+                    <figure>
+                        <img src="image/27ae691289ee6b358bdbfeff44e9bc5b.jpg" class="img-fluid" alt="">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-----------------Playable Section End------------------->
+
+    <!---------------Awards Start---------------->
+    <div class="col-lg-12" style="background-image:url(image/maxresdefault66.png);" id="awardcol">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 class="text-white text-center mt-5 mb-4" style="font-family: 'Rubik', sans-serif;">
+                    <b>Among Us also earn many Game Awards</b>
+                </h1>
+                <img src="image/Trophy.png" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+    <!---------------Awards End---------------->
+
+
+    <!--------------------How to play Start-------------------->
+    <div class="col-lg-12" id="HTPmain">
+        <div class="container" style="background-image:url(image/HTWbg.png);" id="HTPbg">
+            <div class="row">
+                <div class="instration">
+                    <h1 class="How text-center"><b>How to Play</b></h1>
+                    <p class="Howinfo text-center">Prepare for departure but beware the Impostor! Play with 4-15<br>
+                        players online or via local WiFi as you <span class="text-danger">
+                            attempt to hold your</span><br>
+                        <span class="text-danger">spaceship together and survive</span>, but be careful. One or more<br>
+                        random players among the crew are Impostors bent on killing<br>
+                        everyone!
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="crew">
+                    <img src="image/Crewmate.png" class="img-fluid" id="crewmatetitle" alt="">
+                    <h4 class="crewmateobj text-center my-3"><b>Objective:</b>Fill the group task bar or eject the
+                        Impostors
+                    </h4>
+                </div>
+            </div>
+            <div class="row" id="crewobjrow">
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Crew1.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Complete all the tasks on the ship or eject Impostors to win.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Crew2.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Call emergency meetings if you see any dead bodies or suspicious
+                                behavior.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Crew3.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Check the Admin map and Security cameras to keep tabs on other
+                                Crewmates..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="crewobjrow">
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Crew4.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">React quickly to undo the Impostor’s sabotages.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Crew5.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Make sure you have your alibi ready in case you’re falsely accused.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Crew6.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Vote to eject suspected Impostors. Hope you guessed correctly!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="background-image:url(image/HTWbgImposter.png);" id="HTPbg">
+            <div class="row">
+                <div class="crew">
+                    <img src="image/Imposter.png" class="img-fluid" id="crewmatetitle" alt="">
+                    <h4 class="crewmateobj text-center my-3"><b>Objective:</b>Kill off the crew</h4>
+                </div>
+            </div>
+            <div class="row" id="crewobjrow">
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Imposter1.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Kill Crewmates and frame innocent bystanders.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Imposter2.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Pretend to do tasks to blend in with the Crewmates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Imposter3.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Sneak through the vents to quickly move around.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="crewobjrow">
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Imposter4.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Sabotage tasks to cause chaos and confuse the crew.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Imposter5.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Close doors to trap victims and kill in private.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-2">
+                            <img src="image/Imposter6.png" class="crewmatepng img-fluid mx-3" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-10">
+                            <p class="crewmateduty">Do everything you can to convince the crew that you’re one of them.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------How to play End-------------------->
+
+    <!--------------------Footer Start-------------------->
+    <div class="col-lg-12" id="footer12">
+        <div class="container" style="background-color: #2D75B6;">
+            <div class="row">
+                <div class="col-lg-5" id="Contactleft">
+                    <div class="contacttxt">
+                        <h1>CONTACT US FIRST!</h1>
+                        <h4>ask about among u's news, merch, or fan art.</h4>
+                    </div>
+                </div>
+                <div class="col-lg-7" id="Contactright">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <form action="Index.html">
+                                <div class="form-floating">
+                                    <input type="email"
+                                        class="form-control rounded-0 border-top-0 border-start-0 border-end-0"
+                                        id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput"
+                                        style="color: white;font-family: 'VT323', monospace;font-size: 16pt;">Enter
+                                        your Email address</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text"
+                                        class="form-control rounded-0 border-top-0 border-start-0 border-end-0"
+                                        id="floatingInput" placeholder="Enter your question">
+                                    <label for="floatingInput"
+                                        style="color: white;font-family: 'VT323', monospace;font-size: 16pt;">Enter
+                                        your Question</label>
+                                </div>
+                            </form>
+                            <div class="form-check mt-1">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" id="checktxt">
+                                    I would like to receive news, special offers and other information from Among Us
+                                    game.
+                                </label>
+                            </div><br>
+                            <div class="privacy text-white">
+                                <p>Innersloth will be responsible for your personal data. For more information please
+                                    check our <u>Innersloth Privacy Policy</u></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <button class="custom-btn btn-12"><span>Click!</span><span>Send</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center text-lg-start text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 mt-2 d-none d-lg-block">
+                <span id="socialconnect">Our Social Media Connect:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <section class="">
+                    <!-- Facebook -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="fab fa-facebook-f"></i></a>
+
+                    <!-- Twitter -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="fab fa-twitter"></i></a>
+
+                    <!-- Google -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="fab fa-google"></i></a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="fab fa-instagram"></i></a>
+
+                    <!-- Linkedin -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="fab fa-linkedin-in"></i></a>
+
+                    <!-- Github -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="fab fa-github"></i></a>
+                </section>
+                <!-- Section: Social media -->
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold">
+                            <img src="hed1.png" class="img-fluid" alt="">
+                        </h6>
+                        <p>
+                            Innersloth is a Washington-based video game studio,
+                            creating for Windows, macOS, Nintendo Switch,
+                            and mobile.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Our Games
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Among Us</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Among Us VR</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">The Henry Stickmin Collection</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Dig 2 China</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Support
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Shop</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">News</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact Us</h6>
+                        <p><i class="fas fa-home me-3"></i> Redmond, Washington</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            support@innersloth.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> (888) 909-2849</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2022 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Among_Us_Offical.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <!--------------------Footer End-------------------->
+
+
+    <script src="https://kit.fontawesome.com/fc880dc20b.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

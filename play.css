@@ -1,0 +1,108 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Main section styles */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Character selection section styles */
+#character-selection {
+    margin-bottom: 20px;
+}
+
+#character-selection h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#character-list {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+#character-list li {
+    margin-bottom: 5px;
+}
+
+#start-game-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Game area section styles */
+#game-area {
+    display: none;
+}
+
+#game-area h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#task-description {
+    margin-bottom: 10px;
+}
+
+#task-options {
+    margin-bottom: 10px;
+}
+
+#task-options label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#perform-task-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Game result section styles */
+#game-result {
+    display: none;
+}
+
+#game-result h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#game-outcome {
+    margin-bottom: 10px;
+}

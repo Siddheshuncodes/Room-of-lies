@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room of Lies Game</title>
+    <link rel="stylesheet" href="play.css"> <!-- Add your custom CSS file here -->
+</head>
+
+<body>
+    <header>
+        <h1>Room of Lies Game</h1>
+    </header>
+
+    <main>
+        <section id="character-selection">
+            <h2>Choose Your Character</h2>
+            <ul id="character-list">
+                <!-- Dynamically generate the character options here using JavaScript -->
+            </ul>
+            <button id="start-game-btn">Start the Game</button>
+        </section>
+
+        <section id="game-area" style="display: none;">
+            <h2>Task Description</h2>
+            <p id="task-description"></p>
+            <p id="task-description-text">Task Description: [Task description goes here]</p>
+
+            <button id="perform-task-btn">Perform Task</button>
+        </section>
+
+        <section id="game-result" style="display: none;">
+            <h2>Game Result</h2>
+            <p id="game-outcome"></p>
+        </section>
+    </main>
+
+    <script src="game.js"></script> <!-- Add your custom JavaScript file here -->
+</body>
+
+</html>
