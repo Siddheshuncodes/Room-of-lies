@@ -160,6 +160,57 @@ header {
     }
   }
   
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    .game-title {
+      font-size: 24px;
+    }
+    
+    .game-description {
+      font-size: 16px;
+    }
+    
+    .game-banner {
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .game-banner::after {
+      width: 100px;
+      height: 100px;
+      box-shadow: 0 0 10px 5px #f00;
+    }
+    
+    #character-list li label {
+      font-size: 16px;
+    }
+    
+    #start-game-btn {
+      font-size: 16px;
+    }
+    
+    /* Adjust padding and margin for better spacing */
+    main {
+      padding: 20px;
+    }
+    
+    #character-list {
+      margin-top: 20px;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
   
    /* .glowing-eyes {
     position: relative;
