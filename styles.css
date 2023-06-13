@@ -1,5 +1,23 @@
 /* styles.css */
 
+@font-face {
+    font-family: 'Chiller';
+    src: url('path/to/chiller-font.ttf');
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+  body {
+    font-family: 'Chiller', Arial, sans-serif;
+  }
+  
+  h1 {
+    font-family: 'Chiller', Arial, sans-serif;
+  }
+  
 body {
     font-family: Arial, sans-serif;
     background-color: #222;
@@ -72,3 +90,201 @@ input[name="character"]:checked + label {
     color: #fff;
     font-weight: bold;
 }
+
+header {
+    text-align: center;
+    padding: 40px;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .game-title {
+    font-family: 'Chiller';
+    src: url('path/to/chiller-font.ttf');
+        font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .game-description {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  .game-banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .game-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("game-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(70%) contrast(150%) grayscale(100%) blur(5px);
+  }
+  
+  .game-banner::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #000;
+    opacity: 0.7;
+    box-shadow: 0 0 20px 10px #f00;
+    animation: pulse-animation 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-animation {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.5;
+    }
+  }
+  
+  
+   /* .glowing-eyes {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+   */
+  /*.glowing-eyes::before,
+  .glowing-eyes::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: glowing-eyes-animation 2s infinite alternate;
+  }
+  
+  .glowing-eyes::before {
+    left: -10px;
+    transform: translate(0, -50%);
+    box-shadow: 0 0 15px 5px red;
+  }
+  
+  .glowing-eyes::after {
+    right: -10px;
+    transform: translate(0, -50%);
+    box-shadow: 0 0 15px 5px red;
+  }
+  
+  @keyframes glowing-eyes-animation {
+    0% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 30px 10px red;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+   */
+
+
+/* 
+  /* CSS code for the eye */
+ /* .glowing-eyes {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 75px;
+    overflow: hidden;
+    z-index: 9999;
+  }
+  
+  .glowing-eyes::before,
+  .glowing-eyes::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 75px;
+    height: 75px;
+    background-color: #000;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: all 0.2s;
+  }
+  
+  .glowing-eyes::before {
+    left: 0;
+    margin-left: -10px;
+  }
+  
+  .glowing-eyes::after {
+    right: 0;
+    margin-right: -10px;
+  }
+  
+  .glowing-eyes.active::before,
+  .glowing-eyes.active::after {
+    transform: translateY(-50%) translateX(-50%);
+  }
+  
+  .glowing-eyes::before::before,
+  .glowing-eyes::after::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s;
+  }
+  
+  .glowing-eyes.active::before::before,
+  .glowing-eyes.active::after::before {
+    transform: translate(-50%, -50%) translateX(-10px);
+    background-color: #f00; /* Change the color as desired */
+    /* box-shadow: 0 0 10px 5px #f00;  */
+  
+  /* Additional Styling */
+  
+  /* .glowing-eyes::before,
+  .glowing-eyes::after {
+    border: 2px solid #fff;
+  }
+  
+  .glowing-eyes.active::before,
+  .glowing-eyes.active::after {
+    border: 2px solid #f00;
+  }
+  
+  .glowing-eyes::before::before,
+  .glowing-eyes::after::before {
+    border: 1px solid #f00;
+  }
+   */ 
