@@ -1,0 +1,204 @@
+/* styles.css */
+
+@font-face {
+    font-family: 'Chiller';
+    src: url('path/to/chiller-font.ttf');
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  
+  body {
+    font-family: 'Montserrat', Arial, sans-serif;
+  }
+  
+  body {
+    font-family: 'Chiller', Arial, sans-serif;
+  }
+  
+  h1 {
+    font-family: 'Chiller', Arial, sans-serif;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+    color: #ff6c00;
+    font-size: 36px;
+  }
+  
+  header p {
+    margin: 5px 0 0;
+    color: #ff6c00;
+    font-size: 18px;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #444;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  h2 {
+    color: #ff6c00;
+    margin-top: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  
+  #character-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #character-list li {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  #start-game-btn {
+    background-color: #ff6c00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  #start-game-btn:hover {
+    background-color: #ff9000;
+  }
+  
+  /* Highlight the selected character */
+  input[name="character"]:checked + label {
+    background-color: #ff9800;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  header {
+    text-align: center;
+    padding: 40px;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .game-title {
+    font-family: 'Chiller';
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .game-description {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .game-banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .game-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("game-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(70%) contrast(150%) grayscale(100%) blur(5px);
+  }
+  
+  .game-banner::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #000;
+    opacity: 0.7;
+    box-shadow: 0 0 20px 10px #f00;
+    animation: pulse-animation 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-animation {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.5;
+    }
+  }
+  
+  /* Media query for screens smaller than 600px */
+  @media (max-width: 600px) {
+    .game-title {
+      font-size: 24px;
+    }
+  
+    .game-description {
+      font-size: 16px;
+    }
+  
+    .game-banner {
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+    }
+  
+    .game-banner::after {
+      width: 100px;
+      height: 100px;
+      box-shadow: 0 0 10px 5px #f00;
+    }
+  
+    #character-list li label {
+      font-size: 16px;
+    }
+  
+    #start-game-btn {
+      font-size: 16px;
+    }
+  
+    /* Adjust padding and margin for better spacing */
+    main {
+      padding: 20px;
+    }
+  
+    #character-list {
+      margin-top: 20px;
+    }
+  }
+  

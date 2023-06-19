@@ -388,3 +388,868 @@ class Character {
     </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //so this code actually runs properly  -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Add your CSS styles here */
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        margin: 0;
+      }
+      
+      h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      
+      /* Message container styles */
+      #message-container {
+        margin-bottom: 20px;
+      }
+      
+      p {
+        margin: 0;
+        line-height: 1.5;
+      }
+      
+      /* Character list styles */
+      #character-list {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      
+      .character {
+        padding: 10px;
+        margin: 10px;
+        background-color: #666;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .character:hover {
+        background-color: #888;
+      }
+      
+      /* Backstory container styles */
+      #backstory-container {
+        margin-bottom: 20px;
+      }
+      
+      /* Task container styles */
+      #task-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      #task-description {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      
+      #task-choices {
+        font-size: 18px;
+      }
+      
+      /* Input and button styles */
+      #choice-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      
+      #submit-button {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #ff5252;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      
+      #submit-button:hover {
+        background-color: #ff6b6b;
+      }
+      
+      /* Scary theme styles */
+      h1,
+      .character {
+        color: #ff5252;
+      }
+      
+      body {
+        background-color: #000;
+      }
+      
+      #message-container {
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      #backstory-container {
+        background-color: #444;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      #task-container {
+        background-color: #555;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      #task-description {
+        color: #ff5252;
+      }
+      
+      #choice-input {
+        background-color: #333;
+        color: #fff;
+      }
+      
+      #submit-button {
+        background-color: #ff5252;
+      }
+      
+      #submit-button:hover {
+        background-color: #ff6b6b;
+      }
+      
+      .character {
+        cursor: pointer;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+
+      .selected {
+        background-color: lightgray;
+      }
+
+      .choice {
+        cursor: pointer;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Choose Your Character</h1>
+    <div id="character-list"></div>
+
+    <div id="backstory-container">
+      <h2>Character Backstory</h2>
+      <p id="backstory"></p>
+    </div>
+
+    <div id="task-container">
+      <h2 id="task-description">Task Description</h2>
+      <div id="task-choices"></div>
+      <input type="text" id="choice-input" placeholder="Enter your choice" />
+      <button id="submit-button">Submit</button>
+    </div>
+
+    <script>
+    // Character data
+const characters = [
+{
+  name: "Deepali",
+  backstory: "Deepali is a skilled doctor with a deep knowledge of medicine. She has dedicated her life to healing others and is known for her compassion and expertise. With years of experience in the medical field, Deepali has saved countless lives and earned the respect of her colleagues. She is meticulous in her work and always strives for perfection. Deepali's calm and composed nature makes her a reliable and trustworthy individual.",
+  tasks: [
+    {
+      description: "Task 1 for Deepali",
+      choices: ["Choice 1", "Choice 2", "Choice 3"],
+      correctChoice: 2
+    },
+    {
+      description: "Task 2 for Deepali",
+      choices: ["Choice A", "Choice B", "Choice C"],
+      correctChoice: 1
+    }
+  ]
+},
+{
+  name: "Mehul",
+  backstory: "Mehul is an expert data analyst with a passion for deciphering complex patterns and extracting meaningful insights from large datasets. With a strong background in data science and analytics, Mehul has a sharp eye for detail and a logical approach to problem-solving. He is known for his innovative thinking and ability to uncover hidden trends. Mehul's analytical skills and attention to detail make him a valuable asset in any investigative task.",
+  tasks: [
+    {
+      description: "Task 1 for Mehul",
+      choices: ["Choice X", "Choice Y", "Choice Z"],
+      correctChoice: 0
+    },
+    {
+      description: "Task 2 for Mehul",
+      choices: ["Choice M", "Choice N", "Choice O"],
+      correctChoice: 2
+    }
+  ]
+},
+// Add more characters with their backstories and tasks
+];
+
+// Game state variables
+let currentCharacterIndex = 0;
+let currentTaskIndex = 0;
+
+// HTML element references
+const backstoryContainer = document.getElementById("backstory");
+const characterList = document.getElementById("character-list");
+const taskDescription = document.getElementById("task-description");
+const taskChoices = document.getElementById("task-choices");
+const choiceInput = document.getElementById("choice-input");
+const submitButton = document.getElementById("submit-button");
+
+// Display initial character and backstory
+displayCharacter();
+displayBackstory();
+
+// Function to display the current character
+function displayCharacter() {
+characterList.innerHTML = "";
+characters.forEach((character, index) => {
+  const characterElement = document.createElement("div");
+  characterElement.classList.add("character");
+  characterElement.innerText = character.name;
+  characterElement.addEventListener("click", () => {
+    currentCharacterIndex = index;
+    currentTaskIndex = 0;
+    displayCharacter();
+    displayBackstory();
+    displayTask();
+  });
+  if (index === currentCharacterIndex) {
+    characterElement.classList.add("selected");
+  }
+  characterList.appendChild(characterElement);
+});
+}
+
+// Function to display the current character's backstory
+function displayBackstory() {
+const character = characters[currentCharacterIndex];
+backstoryContainer.innerText = character.backstory;
+}
+
+// Function to display the current task
+function displayTask() {
+const character = characters[currentCharacterIndex];
+const task = character.tasks[currentTaskIndex];
+taskDescription.innerText = task.description;
+taskChoices.innerHTML = "";
+task.choices.forEach((choice, index) => {
+  const choiceElement = document.createElement("div");
+  choiceElement.classList.add("choice");
+  choiceElement.innerText = choice;
+  choiceElement.addEventListener("click", () => {
+    handleChoice(index);
+  });
+  taskChoices.appendChild(choiceElement);
+});
+}
+
+// Function to handle user choice
+function handleChoice(choiceIndex) {
+const character = characters[currentCharacterIndex];
+const task = character.tasks[currentTaskIndex];
+const userChoice = choiceInput.value;
+if (userChoice.trim().toLowerCase() === task.choices[choiceIndex].toLowerCase()) {
+  showMessage("Correct choice!");
+} else {
+  showMessage("Incorrect choice. Try again.");
+}
+currentTaskIndex++;
+if (currentTaskIndex >= character.tasks.length) {
+  currentTaskIndex = 0;
+  currentCharacterIndex++;
+  if (currentCharacterIndex >= characters.length) {
+    currentCharacterIndex = 0;
+  }
+}
+displayCharacter();
+displayBackstory();
+displayTask();
+}
+
+// Function to display a message to the user
+function showMessage(message) {
+messageContainer.innerText = message;
+}
+// Character data
+const characters = [
+  {
+    name: "Deepali",
+    backstory: "Deepali is a skilled doctor with a deep knowledge of medicine. She has dedicated her life to healing others and is known for her compassion and expertise. With years of experience in the medical field, Deepali has saved countless lives and earned the respect of her colleagues. She is meticulous in her work and always strives for perfection. Deepali's calm and composed nature makes her a reliable and trustworthy individual.",
+    tasks: [
+      {
+        description: "Task 1 for Deepali",
+        choices: ["Choice 1", "Choice 2", "Choice 3"],
+        correctChoice: 2
+      },
+      {
+        description: "Task 2 for Deepali",
+        choices: ["Choice A", "Choice B", "Choice C"],
+        correctChoice: 1
+      }
+    ]
+  },
+  {
+    name: "Mehul",
+    backstory: "Mehul is an expert data analyst with a passion for deciphering complex patterns and extracting meaningful insights from large datasets. With a strong background in data science and analytics, Mehul has a sharp eye for detail and a logical approach to problem-solving. He is known for his innovative thinking and ability to uncover hidden trends. Mehul's analytical skills and attention to detail make him a valuable asset in any investigative task.",
+    tasks: [
+      {
+        description: "Task 1 for Mehul",
+        choices: ["Choice X", "Choice Y", "Choice Z"],
+        correctChoice: 0
+      },
+      {
+        description: "Task 2 for Mehul",
+        choices: ["Choice M", "Choice N", "Choice O"],
+        correctChoice: 2
+      }
+    ]
+  },
+  // Add more characters with their backstories and tasks
+];
+
+// Game state variables
+let currentCharacterIndex = 0;
+let currentTaskIndex = 0;
+
+// HTML element references
+const backstoryContainer = document.getElementById("backstory");
+const characterList = document.getElementById("character-list");
+const taskDescription = document.getElementById("task-description");
+const taskChoices = document.getElementById("task-choices");
+const choiceInput = document.getElementById("choice-input");
+const submitButton = document.getElementById("submit-button");
+
+// Display initial character and backstory
+displayCharacter();
+displayBackstory();
+
+// Function to display the current character
+function displayCharacter() {
+  characterList.innerHTML = "";
+  characters.forEach((character, index) => {
+    const characterElement = document.createElement("div");
+    characterElement.classList.add("character");
+    characterElement.innerText = character.name;
+    characterElement.addEventListener("click", () => {
+      currentCharacterIndex = index;
+      currentTaskIndex = 0;
+      displayCharacter();
+      displayBackstory();
+      displayTask();
+    });
+    if (index === currentCharacterIndex) {
+      characterElement.classList.add("selected");
+    }
+    characterList.appendChild(characterElement);
+  });
+}
+
+// Function to display the current character's backstory
+function displayBackstory() {
+  const character = characters[currentCharacterIndex];
+  backstoryContainer.innerText = character.backstory;
+}
+
+// Function to display the current task
+function displayTask() {
+  const character = characters[currentCharacterIndex];
+  const task = character.tasks[currentTaskIndex];
+  taskDescription.innerText = task.description;
+  taskChoices.innerHTML = "";
+  task.choices.forEach((choice, index) => {
+    const choiceElement = document.createElement("div");
+    choiceElement.classList.add("choice");
+    choiceElement.innerText = choice;
+    choiceElement.addEventListener("click", () => {
+      handleChoice(index);
+    });
+    taskChoices.appendChild(choiceElement);
+  });
+}
+
+// Function to handle user choice
+function handleChoice(choiceIndex) {
+  const character = characters[currentCharacterIndex];
+  const task = character.tasks[currentTaskIndex];
+  const userChoice = choiceInput.value;
+  if (userChoice.trim().toLowerCase() === task.choices[choiceIndex].toLowerCase()) {
+    showMessage("Correct choice!");
+  } else {
+    showMessage("Incorrect choice. Try again.");
+  }
+  currentTaskIndex++;
+  if (currentTaskIndex >= character.tasks.length) {
+    currentTaskIndex = 0;
+    currentCharacterIndex++;
+    if (currentCharacterIndex >= characters.length) {
+      currentCharacterIndex = 0;
+    }
+  }
+  displayCharacter();
+  displayBackstory();
+  displayTask();
+}
+
+// Function to display a message to the user
+function showMessage(message) {
+  messageContainer.innerText = message;
+}
+
+    </script>
+  </body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Imposter Game</title>
+    <style>
+      /* Add your CSS styles here */
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        margin: 0;
+      }
+      
+      h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      
+      /* Message container styles */
+      #message-container {
+        margin-bottom: 20px;
+      }
+      
+      p {
+        margin: 0;
+        line-height: 1.5;
+      }
+      
+      /* Character list styles */
+      #character-list {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      
+      .character {
+        padding: 10px;
+        margin: 10px;
+        background-color: #666;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .character:hover {
+        background-color: #888;
+      }
+      
+      /* Backstory container styles */
+      #backstory-container {
+        margin-bottom: 20px;
+      }
+      
+      /* Task container styles */
+      #task-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      #task-description {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      
+      #task-choices {
+        font-size: 18px;
+      }
+      
+      /* Input and button styles */
+      #choice-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      
+      #submit-button {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #ff5252;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      
+      #submit-button:hover {
+        background-color: #ff6b6b;
+      }
+      
+      /* Scary theme styles */
+      h1,
+      .character {
+        color: #ff5252;
+      }
+      
+      body {
+        background-color: #000;
+      }
+      
+      #message-container {
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      #backstory-container {
+        background-color: #444;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      #task-container {
+        background-color: #555;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      #task-description {
+        color: #ff5252;
+      }
+      
+      #choice-input {
+        background-color: #333;
+        color: #fff;
+      }
+      
+      #submit-button {
+        background-color: #ff5252;
+      }
+      
+      #submit-button:hover {
+        background-color: #ff6b6b;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Imposter Game</h1>
+    <div id="message-container"></div>
+    <div id="character-list"></div>
+    <div id="backstory-container"></div>
+    <div id="task-container"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        class Character {
+          constructor(name, isImposter, backstory) {
+            this.name = name;
+            this.isImposter = isImposter;
+            this.backstory = backstory;
+          }
+        }
+
+        class Task {
+          constructor(description, choices, correctChoiceIndex) {
+            this.description = description;
+            this.choices = choices;
+            this.correctChoiceIndex = correctChoiceIndex;
+          }
+        }
+
+        const characters = [
+          new Character(
+            "Character 1",
+            false,
+            "Character 1 backstory."
+          ),
+          new Character(
+            "Character 2",
+            true,
+            "Character 2 backstory."
+          ),
+          new Character(
+            "Character 3",
+            false,
+            "Character 3 backstory."
+          ),
+          new Character(
+            "Character 4",
+            false,
+            "Character 4 backstory."
+          ),
+          new Character(
+            "Character 5",
+            false,
+            "Character 5 backstory."
+          ),
+          new Character(
+            "Character 6",
+            false,
+            "Character 6 backstory."
+          ),
+        ];
+
+        const tasks = [
+          new Task(
+            "Task 1 description",
+            ["Choice A", "Choice B", "Choice C"],
+            0
+          ),
+          new Task(
+            "Task 2 description",
+            ["Choice A", "Choice B", "Choice C"],
+            2
+          ),
+          new Task(
+            "Task 3 description",
+            ["Choice A", "Choice B", "Choice C"],
+            1
+          ),
+        ];
+
+        let imposter;
+        let selectedCharacter;
+        let currentTaskIndex = 0;
+
+        const messageContainer = document.getElementById("message-container");
+        const characterList = document.getElementById("character-list");
+        const backstoryContainer = document.getElementById("backstory-container");
+        const taskContainer = document.getElementById("task-container");
+
+        function displayMessage(message) {
+          messageContainer.textContent = message;
+        }
+
+        function displayCharacterList() {
+          characterList.innerHTML = "";
+          characters.forEach(character => {
+            const characterElement = document.createElement("div");
+            characterElement.classList.add("character");
+            characterElement.textContent = character.name;
+            characterElement.addEventListener("click", () => {
+              selectCharacter(character);
+            });
+            characterList.appendChild(characterElement);
+          });
+        }
+
+        function selectCharacter(character) {
+          selectedCharacter = character;
+          revealBackstories();
+        }
+
+        function revealBackstories() {
+          backstoryContainer.innerHTML = "";
+          characters.forEach(character => {
+            const backstoryElement = document.createElement("p");
+            if (character === selectedCharacter || character === imposter) {
+              backstoryElement.textContent = character.backstory;
+            } else {
+              backstoryElement.textContent = "???";
+            }
+            backstoryContainer.appendChild(backstoryElement);
+          });
+          displayTask();
+        }
+
+        function displayTask() {
+          if (currentTaskIndex < tasks.length) {
+            const task = tasks[currentTaskIndex];
+            taskContainer.innerHTML = `
+              <p id="task-description">${task.description}</p>
+              <div id="task-choices">
+                ${task.choices.map((choice, index) => `
+                  <input type="radio" name="choice" value="${index}">
+                  <label>${choice}</label><br>
+                `).join("")}
+              </div>
+              <input id="choice-input" type="text" placeholder="Enter your choice" required>
+              <button id="submit-button">Submit</button>
+            `;
+            const submitButton = document.getElementById("submit-button");
+            submitButton.addEventListener("click", evaluateChoice);
+          } else {
+            displayMessage("Game over!");
+          }
+        }
+
+        function evaluateChoice() {
+          const choiceInput = document.getElementById("choice-input");
+          const selectedChoiceIndex = document.querySelector('input[name="choice"]:checked')?.value;
+          const textChoice = choiceInput.value.trim();
+
+          if (selectedChoiceIndex === null && textChoice === "") {
+            displayMessage("Please make a choice or enter a text choice.");
+            return;
+          }
+
+          if (selectedChoiceIndex !== null && textChoice !== "") {
+            displayMessage("Please choose only one type of choice.");
+            return;
+          }
+
+          if (selectedChoiceIndex !== null) {
+            evaluateSelectedChoice(parseInt(selectedChoiceIndex));
+          } else {
+            evaluateTextChoice(textChoice);
+          }
+
+          choiceInput.value = "";
+        }
+
+        function evaluateSelectedChoice(choiceIndex) {
+          const task = tasks[currentTaskIndex];
+          if (choiceIndex === task.correctChoiceIndex) {
+            displayMessage("Correct choice!");
+          } else {
+            displayMessage("Wrong choice!");
+          }
+          currentTaskIndex++;
+          displayTask();
+        }
+
+        function evaluateTextChoice(textChoice) {
+          const task = tasks[currentTaskIndex];
+          if (textChoice.toLowerCase() === task.choices[task.correctChoiceIndex].toLowerCase()) {
+            displayMessage("Correct choice!");
+          } else {
+            displayMessage("Wrong choice!");
+          }
+          currentTaskIndex++;
+          displayTask();
+        }
+
+        function startGame() {
+          const imposterIndex = Math.floor(Math.random() * characters.length);
+          imposter = characters[imposterIndex];
+          displayCharacterList();
+          displayMessage("Select a character to reveal backstories and complete tasks.");
+        }
+
+        startGame();
+      });
+    </script>
+  </body>
+</html> -->
