@@ -1,37 +1,52 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-body{
-margin: 1rem;
-}
-
-.form-check-input {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    margin: 1rem;
+  }
+  
+  .form-check-input {
     transform: scale(1.6);
     -webkit-transform: scale(1.6);
     -moz-transform: scale(1.6);
     -ms-transform: scale(1.6);
     -o-transform: scale(1.6);
-}
-.rotate{
+  }
+  
+  .rotate {
     position: relative;
     font-size: small;
-    margin-left:-30px;
-    margin-top:50px;
+    margin-left: -30px;
+    margin-top: 50px;
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     -o-transform: rotate(90deg);
-}
-img {
-    border-radius:10px;
+  }
+  
+  img {
+    border-radius: 10px;
     box-shadow: 5px 5px 15px rgb(109, 103, 69);
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    -ms-border-radius:10px;
-    -o-border-radius:10px;
-}
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  
+  /* Improved font size for mobile devices */
+  
+  @media (max-width: 576px) {
+    .display-10 {
+      font-size: 0.8rem;
+    }
+  
+    .display-6 {
+      font-size: 1.2rem;
+    }
+  }
+  
