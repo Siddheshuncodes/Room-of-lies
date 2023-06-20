@@ -228,4 +228,3 @@ class Character {
   
   // Start the game when the page finishes loading
   window.addEventListener("load", startGame);
-  
